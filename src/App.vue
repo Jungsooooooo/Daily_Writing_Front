@@ -1,6 +1,6 @@
 <template>
-  <headerBar />
   <div>
+    <headerBar />
     <HelloWorld msg="Welcome to Your Vue.js App" />
     <div>
       <router-view></router-view>
