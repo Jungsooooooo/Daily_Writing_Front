@@ -1,10 +1,17 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "./components/views/Home";
+import hiHi from "./components/views/test2.vue";
 
-Vue.useAttrs(VueRouter);
+Vue.use(VueRouter);
 
-export const router = new VueRouter({
+const router = new VueRouter({
   mode: "history",
-  routes: [{ path: "/home", component: Home }],
+  routes: [
+    {
+      path: "/home",
+      component: hiHi,
+    },
+  ],
 });
+
+export default router;
