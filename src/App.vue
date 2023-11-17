@@ -1,21 +1,18 @@
 <template>
   <div>
     <headerBar />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
     <div>
-      <router-view></router-view>
+      <router-view> </router-view>
     </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
 import headerBar from "./components/header/test.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
     headerBar,
   },
 };
