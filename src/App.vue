@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import headerBar from "./components/header/test.vue";
+import headerBar from "./components/header/Header.vue";
 
 export default {
   name: "App",
