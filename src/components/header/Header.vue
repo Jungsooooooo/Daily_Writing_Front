@@ -12,7 +12,11 @@
               class="mr-sm-2"
               placeholder="Search"
             ></b-form-input>
-            <b-button size="sm" class="my-2 my-sm-0" type="submit"
+            <b-button
+              size="sm"
+              class="my-2 my-sm-0"
+              id="search"
+              @click="click()"
               >Search</b-button
             >
           </b-nav-form>
@@ -26,7 +30,14 @@
 export default {
   name: "headerBar",
   compatConfig: { MODE: 3 },
+  methods: {
+    click() {
+      alert("버튼클릭");
+    },
+  },
 };
+
+// eslint-disable-line no-unused-vars
 </script>
 
 <style>
