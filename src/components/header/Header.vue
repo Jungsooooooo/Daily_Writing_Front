@@ -27,12 +27,15 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "headerBar",
   compatConfig: { MODE: 3 },
   methods: {
     click() {
-      alert("버튼클릭");
+      axios.get("/api/writings").then((res) => {
+        console.log(res.data);
+      });
     },
   },
 };
