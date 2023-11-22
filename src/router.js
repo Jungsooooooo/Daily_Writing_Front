@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import hiHi from "./components/views/test2.vue";
+import HomeView from "./components/views/HomeView.vue";
 
 Vue.use(VueRouter);
 
@@ -9,7 +9,7 @@ const router = new VueRouter({
   routes: [
     {
       path: "/home",
-      component: hiHi,
+      component: HomeView,
     },
   ],
 });
