@@ -1,0 +1,15 @@
+.writeTitle {
+  margin-top: 10px;
+  width: 100%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline: none;
+}
+
+.writeContext {
+  width: 100%;
+  margin-top: 10px;
+  border: none;
+  outline: none;
+}
