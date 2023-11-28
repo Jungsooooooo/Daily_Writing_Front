@@ -6,7 +6,13 @@ module.exports = defineConfig({
       "/api": {
         target: "http://localhost:5000",
         changeOrigin: true,
+        pathRewrite: {
+          ".^/api": "",
+        },
       },
+    },
+    client: {
+      overlay: false,
     },
   },
 });
