@@ -1,10 +1,11 @@
 <template>
-  <div>
+  <div class="write">
     <b-col cols="6">
       <input class="writeTitle" placeholder="제목을 입력해주세요" />
       <div>
-        <input class="writeContext" placeholder="내용" />
+        <textarea class="writeContext" wrap="soft" placeholder="내용" />
       </div>
+      <template #footer> <div>hi</div> </template>
     </b-col>
   </div>
 </template>
