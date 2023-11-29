@@ -13,11 +13,26 @@
 }
 
 .writeContext {
-  width: 100%;
   margin-top: 10px;
   border: none;
   outline: none;
-  height: 100%;
+
   white-space: pre-wrap;
   overflow-wrap: break-word;
+  width: 100%;
+  height: 85vh; /* 화면 높이의 100% */
+  resize: none; /* 사용자가 크기를 조절하지 못하도록 설정 */
+}
+
+.saveWrite {
+  background-color: lightseagreen !important;
+  font-weight: bold !important;
+  outline: none;
+  border: none !important;
+}
+
+.saveWriteCol {
+  justify-content: flex-end !important;
+  display: flex;
+  padding: 10px;
 }
