@@ -1,3 +1,11 @@
 .homeCard {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* 필요에 따라 조절하여 여백을 조절할 수 있습니다. */
+}
+
+#cardEach {
+  margin-left: 20px;
+  cursor: pointer;
+  width: 30%;
 }
