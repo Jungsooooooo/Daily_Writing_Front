@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="homeCard">
     <b-card-group deck v-for="(group, index) in groupedData" :key="index">
       <b-card
         v-for="item in group"
@@ -9,6 +9,7 @@
         img-alt="Image"
         img-top
         tag="article"
+        style="max-width: 15rem"
         class="mt-3"
         id="cardEach"
       >
@@ -29,7 +30,7 @@ export default {
   },
   computed: {
     groupedData() {
-      const groupSize = 4;
+      const groupSize = 5;
       const result = [];
 
       for (let i = 0; i < this.data.length; i += groupSize) {
