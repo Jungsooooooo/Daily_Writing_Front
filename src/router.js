@@ -9,7 +9,7 @@ const router = new VueRouter({
   mode: "history",
   routes: [
     {
-      path: "/home",
+      path: "/",
       component: HomeView,
     },
     { path: "/write", component: ToWrite },
