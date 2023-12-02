@@ -9,6 +9,9 @@
         <b-button size="sm" class="saveWrite" @click="saveWrite()">저장</b-button>
       </footer>
     </b-col>
+    <div>
+      <b-modal ref="saveModal"></b-modal>
+    </div>
   </div>
 </template>
 
@@ -23,7 +26,10 @@ export default {
         title: title,
         context: context,
       };
-      axios.post("/api/writings/create", input);
+      axios.post("/api/writings/create", input).then((res) => {
+        console.log(res.data);
+        this.$bvModal.msgBoxOk(res.data.title + "이 작성되었습니다.");
+      });
     },
   },
 };
