@@ -12,3 +12,7 @@
   color: darkblue !important;
   margin-left: 1em;
 }
+
+.searchIcon {
+  cursor: pointer;
+}
