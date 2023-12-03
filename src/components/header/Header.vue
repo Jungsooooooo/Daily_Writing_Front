@@ -7,7 +7,7 @@
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
           <b-nav-form>
-            <b-icon-search class="searchIcon" />
+            <b-icon-search class="searchIcon" @click="goToSearch()" />
             <b-button size="sm" class="writeButton" @click="goToWrite()">새 글 쓰기</b-button>
           </b-nav-form>
         </b-navbar-nav>
@@ -31,6 +31,10 @@ export default {
 
     goToWrite() {
       this.$router.push("/write");
+    },
+
+    goToSearch() {
+      this.$router.push("search");
     },
   },
 };
