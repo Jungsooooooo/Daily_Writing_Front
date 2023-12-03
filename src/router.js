@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "./components/views/HomeView.vue";
 import ToWrite from "./components/views/ToWrite.vue";
+import SearchView from "./components/views/SearchView.vue";
 
 Vue.use(VueRouter);
 
@@ -13,6 +14,7 @@ const router = new VueRouter({
       component: HomeView,
     },
     { path: "/write", component: ToWrite },
+    { path: "/search", component: SearchView },
   ],
 });
 
