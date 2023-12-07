@@ -5,13 +5,14 @@
         v-for="item in group"
         :title="item.title"
         :key="item.title"
-        img-src="https://picsum.photos/600/300/?image=25"
+        img-src="http://192.168.75.128/home/user/Pictures/diary_picture/1123.jpg"
         img-alt="Image"
         img-top
         tag="article"
         style="max-width: 15rem"
         class="mt-3"
         id="cardEach"
+        @click="goToDetail('item')"
       >
         {{ item.context }}
       </b-card>
@@ -45,6 +46,11 @@ export default {
       this.data = res.data;
       console.log(this.data);
     });
+  },
+  methods: {
+    goToDetail(item) {
+      console.log(item);
+    },
   },
 };
 </script>
