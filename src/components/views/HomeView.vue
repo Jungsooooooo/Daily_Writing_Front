@@ -51,6 +51,10 @@ export default {
   methods: {
     goToDetail(id) {
       console.log(id);
+      axios.get("/api/writings/" + id).then((res) => {
+        console.log(res);
+        this.$router.push({ path: "/detail", query: { info: res.data } });
+      });
     },
   },
 };
