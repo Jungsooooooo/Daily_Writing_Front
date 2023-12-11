@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     groupedData() {
-      const groupSize = 5;
+      const groupSize = 6;
       const result = [];
 
       for (let i = 0; i < this.data.length; i += groupSize) {
@@ -53,7 +53,7 @@ export default {
       console.log(id);
       axios.get("/api/writings/" + id).then((res) => {
         console.log(res);
-        this.$router.push({ path: "/detail", query: { info: res.data } });
+        this.$router.push({ path: "/detail", query: { title: res.data.title, context: res.data.context } });
       });
     },
   },

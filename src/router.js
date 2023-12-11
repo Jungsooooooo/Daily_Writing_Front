@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 import HomeView from "./components/views/HomeView.vue";
 import ToWrite from "./components/views/ToWrite.vue";
 import SearchView from "./components/views/SearchView.vue";
-import DetailView from "./components/views/SearchView.vue";
+import DetailView from "./components/views/DetailView.vue";
 
 Vue.use(VueRouter);
 
