@@ -1,3 +1,17 @@
-.detailView {
-  text-align: center;
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.detailEntireView {
+  margin-top: 5em;
+  margin-left: 100px; /* 좌측 여백 50px */
+  margin-right: 50px; /* 우측 여백 50px */
+  width: 80%
+
+  box-sizing: border-box; /* 내부 여백을 크기에 포함시키기 위해 */
+}
+
+.detailTitle {
+  font-weight: bold;
 }

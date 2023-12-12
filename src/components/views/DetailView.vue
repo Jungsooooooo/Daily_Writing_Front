@@ -1,7 +1,12 @@
 <template>
-  <div class="detailView">
-    {{ $route.query.title }}
-    {{ $route.query.context }}
+  <div class="detailEntireView">
+    <div>
+      <h1 class="detailTitle">{{ $route.query.title }}</h1>
+    </div>
+
+    <div class="detailContext">
+      <p>{{ $route.query.context }}</p>
+    </div>
   </div>
 </template>
 
