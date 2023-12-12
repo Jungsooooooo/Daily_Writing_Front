@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="homeCard">
     <b-card-group deck v-for="(group, index) in groupedData" :key="index">
       <b-card
         v-for="item in group"
@@ -9,15 +9,14 @@
         img-alt="Image"
         img-top
         tag="article"
-        style="max-width: 15rem"
+        style="max-width: 10rem, max-height:10px"
         class="mt-3"
         id="cardEach"
         @click="goToDetail(item.id)"
       >
-        {{ item.context }}
+        <p class="itemContext">{{ item.context }}</p>
       </b-card>
     </b-card-group>
-    <img src="192.168.75.128/home/user/Pictures/diary_picture/1123.jpg" />
   </div>
 </template>
 
@@ -32,7 +31,7 @@ export default {
   },
   computed: {
     groupedData() {
-      const groupSize = 6;
+      const groupSize = 4;
       const result = [];
 
       for (let i = 0; i < this.data.length; i += groupSize) {
@@ -53,7 +52,10 @@ export default {
       console.log(id);
       axios.get("/api/writings/" + id).then((res) => {
         console.log(res);
-        this.$router.push({ path: "/detail", query: { title: res.data.title, context: res.data.context } });
+        this.$router.push({
+          path: "/detail",
+          query: { title: res.data.title, context: res.data.context },
+        });
       });
     },
   },

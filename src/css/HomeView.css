@@ -1,10 +1,18 @@
 .homeCard {
-  display: flex;
+  /* display: flex; */
+  margin-top: 3rem;
   flex-wrap: wrap;
   justify-content: center; /* 필요에 따라 조절하여 여백을 조절할 수 있습니다. */
+  padding-right: 30px;
 }
 
 #cardEach {
   margin-left: 3em;
+}
+
+.itemContext {
   cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
