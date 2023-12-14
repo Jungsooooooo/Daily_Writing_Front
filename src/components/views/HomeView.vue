@@ -54,7 +54,7 @@ export default {
         console.log(res);
         this.$router.push({
           path: "/detail",
-          query: { title: res.data.title, context: res.data.context },
+          query: { title: res.data.title, context: res.data.context, id: id },
         });
       });
     },
