@@ -27,8 +27,8 @@ export default {
   computed: {},
 
   methods: {
-    deleteWriting() {
-      axios.delete("/api/writings/delete/" + this.longId).then(() => {
+    deleteWriting(id) {
+      axios.delete("/api/writings/delete/" + id).then(() => {
         console.log("삭제완료");
       });
     },
