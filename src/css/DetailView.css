@@ -1,13 +1,8 @@
-body {
-  margin: 0;
-  padding: 0;
-}
-
 .detailEntireView {
   margin-top: 5em;
-  margin-left: 500px;
-  margin-right: 200px;
-  width: 80%;
+  margin-left: auto; /* 왼쪽 마진을 'auto'로 설정하여 가운데 정렬 */
+  margin-right: auto; /* 오른쪽 마진을 'auto'로 설정하여 가운데 정렬 */
+  width: 50em;
 }
 
 .detailTitle {
@@ -15,6 +10,6 @@ body {
 }
 
 .detailContext {
-  width: 300px;
+  width: 50em;
   word-wrap: break-word;
 }
