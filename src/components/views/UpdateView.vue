@@ -3,10 +3,10 @@
     <b-col cols="6">
       <input v-model="titleValue" class="writeTitle" />
       <div>
-        <textarea class="writeContext" wrap="soft"> </textarea>
+        <textarea v-model="contextValue" class="writeContext" wrap="soft" />
       </div>
       <footer class="saveWriteCol">
-        <b-button size="sm" class="saveWrite" @click="saveWrite()">저장</b-button>
+        <b-button size="sm" class="saveWrite" @click="updateWrite()">수정</b-button>
       </footer>
     </b-col>
     <div>
@@ -22,13 +22,16 @@ export default {
   data() {
     return {
       titleValue: "",
+      contextValue: "",
     };
   },
   mounted() {
     const title = this.$route.query.title;
-    console.log({ title });
+    const context = this.$route.query.context;
+
     if (title !== undefined) {
       this.titleValue = title;
+      this.contextValue = context;
     }
   },
   methods: {

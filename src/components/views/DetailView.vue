@@ -22,10 +22,19 @@ import axios from "axios";
 export default {
   data() {
     return {
-      longId: this.id,
+      titleValue: "",
+      contextValue: "",
     };
   },
-  computed: {},
+  mounted() {
+    const title = this.$route.query.title;
+    const context = this.$route.query.context;
+    console.log({ title });
+    if (title !== undefined) {
+      this.titleValue = title;
+      this.contextValue = context;
+    }
+  },
 
   methods: {
     deleteWriting(id) {
@@ -36,7 +45,7 @@ export default {
     updateWriting() {
       this.$router.push({
         path: "/update",
-        query: { title: this.title, context: this.context, id: this.id },
+        query: { title: this.titleValue, context: this.contextValue, id: this.id },
       });
     },
   },
