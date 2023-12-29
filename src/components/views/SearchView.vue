@@ -34,7 +34,7 @@
           </b-card>
         </b-card-group>
       </div>
-      <div v-else>hello</div>
+      <div v-else class="nullCheck">{{ nullCheck }}</div>
     </div>
   </div>
 </template>
@@ -47,6 +47,7 @@ export default {
   data() {
     return {
       writingList: [],
+      nullCheck: "",
     };
   },
   computed: {
@@ -66,8 +67,13 @@ export default {
     search() {
       const title = { title: document.getElementById("searchTitle").value };
       axios.post("/api/writings/search", title).then((res) => {
+        const checkData = res.data;
         this.writingList = res.data;
-        console.log(this.writingList);
+
+        if (checkData.length == 0) {
+          this.nullCheck =
+            "'" + title.title + "'" + "에 해당하는 데이터가 없습니다";
+        }
       });
     },
     goToDetail(id) {
