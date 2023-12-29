@@ -1,3 +1,10 @@
 .searchBar {
   margin-top: 5rem;
 }
+
+.itemContext {
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis !important;
+  white-space: nowrap;
+}

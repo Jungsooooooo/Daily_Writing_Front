@@ -14,27 +14,25 @@
         </b-col>
       </b-row>
     </div>
-    <div>
+    <div class="homeCard">
       <div v-if="writingList.length > 0">
-        <b-row>
-          <b-card-group deck v-for="(group, index) in groupedData" :key="index">
-            <b-card
-              v-for="item in group"
-              :title="item.title"
-              :key="item.id"
-              img-src="192.168.75.128/home/user/Pictures/diary_picture/1123.jpg"
-              img-alt="Image"
-              img-top
-              tag="article"
-              style="max-width: 10rem, max-height:500px"
-              class="mt-3"
-              id="cardEach"
-              @click="goToDetail(item.id)"
-            >
-              <p class="itemContext">{{ item.context }}</p>
-            </b-card>
-          </b-card-group>
-        </b-row>
+        <b-card-group deck v-for="(group, index) in groupedData" :key="index">
+          <b-card
+            v-for="item in group"
+            :title="item.title"
+            :key="item.id"
+            img-src="192.168.75.128/home/user/Pictures/diary_picture/1123.jpg"
+            img-alt="Image"
+            img-top
+            tag="article"
+            style="max-width: 10rem, max-height:10px"
+            class="mt-3"
+            id="cardEach"
+            @click="goToDetail(item.id)"
+          >
+            <p class="itemContext">{{ item.context }}</p>
+          </b-card>
+        </b-card-group>
       </div>
       <div v-else>hello</div>
     </div>
