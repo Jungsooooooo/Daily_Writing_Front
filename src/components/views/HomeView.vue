@@ -5,7 +5,7 @@
         v-for="item in group"
         :title="item.title"
         :key="item.title"
-        img-src="192.168.75.128/home/user/Pictures/diary_picture/1123.jpg"
+        img-src="http://192.168.75.128/home/user/Pictures/diary_picture/1123.jpg"
         img-alt="Image"
         img-top
         tag="article"
@@ -27,6 +27,7 @@ export default {
   data() {
     return {
       data: [],
+      imageUrl: null,
     };
   },
   computed: {
@@ -57,6 +58,26 @@ export default {
           query: { title: res.data.title, context: res.data.context, id: id },
         });
       });
+    },
+    previewImage(event) {
+      const file = event.target.files[0];
+
+      if (file && file.type.startsWith("image/")) {
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+          this.imageUrl = e.target.result;
+        };
+
+        console.log(this.imageUrl);
+        console.log(file);
+
+        reader.readAsDataURL(file);
+      } else {
+        // Handle non-image file types
+        this.imageUrl = null;
+        alert("Please choose a valid image file.");
+      }
     },
   },
 };

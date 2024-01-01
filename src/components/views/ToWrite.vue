@@ -6,9 +6,7 @@
         <textarea class="writeContext" wrap="soft" placeholder="내용" />
       </div>
       <footer class="saveWriteCol">
-        <b-button size="sm" class="saveWrite" @click="saveWrite()"
-          >저장</b-button
-        >
+        <b-button size="sm" class="saveWrite" @click="saveWrite()">저장</b-button>
       </footer>
     </b-col>
     <div>
@@ -30,11 +28,9 @@ export default {
       };
       axios.post("/api/writings/create", input).then((res) => {
         console.log(res.data);
-        this.$bvModal
-          .msgBoxOk(res.data.title + "이 작성되었습니다.")
-          .then(() => {
-            this.$router.push("/");
-          });
+        this.$bvModal.msgBoxOk(res.data.title + "이 작성되었습니다.").then(() => {
+          this.$router.push("/");
+        });
       });
     },
   },

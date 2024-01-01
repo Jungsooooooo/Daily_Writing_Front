@@ -24,15 +24,18 @@ export default {
     return {
       titleValue: "",
       contextValue: "",
+      id: "",
     };
   },
   mounted() {
     const title = this.$route.query.title;
     const context = this.$route.query.context;
+    const id = this.$route.query.id;
     console.log({ title });
     if (title !== undefined) {
       this.titleValue = title;
       this.contextValue = context;
+      this.id = id;
     }
   },
 

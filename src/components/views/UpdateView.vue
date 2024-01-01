@@ -23,28 +23,33 @@ export default {
     return {
       titleValue: "",
       contextValue: "",
+      id: "",
     };
   },
   mounted() {
     const title = this.$route.query.title;
     const context = this.$route.query.context;
+    const id = this.$route.query.id;
 
     if (title !== undefined) {
       this.titleValue = title;
       this.contextValue = context;
+      this.id = id;
     }
   },
   methods: {
-    saveWrite() {
+    updateWrite() {
       let title = document.getElementsByClassName("writeTitle")[0].value;
       let context = document.getElementsByClassName("writeContext")[0].value;
+      let id = this.id;
       const input = {
         title: title,
         context: context,
+        id: id,
       };
-      axios.post("/api/writings/create", input).then((res) => {
+      axios.post("/api/writings/update", input).then((res) => {
         console.log(res.data);
-        this.$bvModal.msgBoxOk(res.data.title + "이 작성되었습니다.").then(() => {
+        this.$bvModal.msgBoxOk(res.data.title + "이 수정되었습니다.").then(() => {
           this.$router.push("/");
         });
       });
