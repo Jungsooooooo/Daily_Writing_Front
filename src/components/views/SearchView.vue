@@ -66,7 +66,8 @@ export default {
   methods: {
     search() {
       const title = { title: document.getElementById("searchTitle").value };
-      axios.post("/api/writings/search", title).then((res) => {
+      const name = document.getElementById("searchTitle").value;
+      axios.get("/api/writings/search/" + name).then((res) => {
         const checkData = res.data;
         this.writingList = res.data;
 
