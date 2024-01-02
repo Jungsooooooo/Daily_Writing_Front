@@ -8,3 +8,7 @@
   text-overflow: ellipsis !important;
   white-space: nowrap;
 }
+
+.nullCheck {
+  text-align: center;
+}
