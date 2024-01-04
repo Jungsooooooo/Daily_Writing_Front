@@ -8,11 +8,16 @@
 
 #cardEach {
   margin-left: 3em;
+  cursor: pointer;
 }
 
 .itemContext {
-  cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.pagingHome {
+  text-align: center !important;
+  margin: 0 auto;
 }
