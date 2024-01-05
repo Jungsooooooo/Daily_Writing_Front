@@ -1,23 +1,25 @@
 <template>
-  <div class="homeCard">
-    <b-card-group deck v-for="(group, index) in groupedData" :key="index">
+  <div>
+    <div class="homeCard">
+      <!-- <b-card-group deck v-for="(group, index) in groupedData" :key="index"> -->
       <b-card
-        v-for="item in group"
+        v-for="item in data"
         :title="item.title"
-        :key="item.title"
+        :key="item.id"
         img-src="http://192.168.67.128/images/test2.PNG"
         img-alt="Image"
         img-top
         tag="article"
-        style="max-width: 10rem, max-height:10px"
+        style="width: 100px, max-height:10px"
         class="mt-3"
         id="cardEach"
         @click="goToDetail(item.id)"
       >
         <p class="itemContext">{{ item.context }}</p>
       </b-card>
-    </b-card-group>
-    <div>
+      <!-- </b-card-group> -->
+    </div>
+    <div class="pagingColumn">
       <b-pagination
         v-model="currentPage"
         :total-rows="rows"
@@ -38,35 +40,12 @@ export default {
       rows: 0,
       perPage: 12,
       currentPage: 1,
+      maxCardsPerRow: 4, // 한 줄에 표시할 최대 카드 수
     };
   },
-  computed: {
-    groupedData() {
-      const groupSize = 4;
-      const result = [];
-
-      for (let i = 0; i < this.data.length; i += groupSize) {
-        result.push(this.data.slice(i, i + groupSize));
-      }
-
-      return result;
-    },
-  },
+  computed: {},
   mounted() {
-    let page = this.currentPage - 1;
-    let size = 12;
-    axios
-      .get("/api/writings", {
-        params: {
-          page,
-          size,
-        },
-      })
-      .then((res) => {
-        this.data = res.data.writings;
-
-        this.rows = res.data.totalElements;
-      });
+    this.getHomeData();
   },
   methods: {
     getHomeData() {
@@ -84,6 +63,8 @@ export default {
 
           this.rows = res.data.totalElements;
         });
+
+      return this.data;
     },
 
     goToDetail(id) {

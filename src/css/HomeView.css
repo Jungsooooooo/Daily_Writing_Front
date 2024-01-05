@@ -2,13 +2,14 @@
   /* display: flex; */
   margin-top: 5em !important;
   flex-wrap: wrap;
-  justify-content: center; /* 필요에 따라 조절하여 여백을 조절할 수 있습니다. */
-  padding-right: 30px;
+  justify-content: center;
+  display: flex;
 }
 
 #cardEach {
   margin-left: 3em;
   cursor: pointer;
+  width: calc(25% - 16px);
 }
 
 .itemContext {
@@ -17,7 +18,7 @@
   white-space: nowrap;
 }
 
-.pagingHome {
+.pagination {
   text-align: center !important;
-  margin: 0 auto;
+  margin-left: 30px;
 }
