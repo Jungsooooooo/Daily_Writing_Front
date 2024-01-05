@@ -18,11 +18,11 @@
       </b-card>
     </b-card-group>
     <div>
-      <b-pagination-nav
-        :pages="pages1"
-        use-router
-        class="pagingHome"
-      ></b-pagination-nav>
+      <b-pagination
+        v-model="currentPage"
+        :total-rows="rows"
+        :per-page="perPage"
+      ></b-pagination>
     </div>
   </div>
 </template>
@@ -35,6 +35,9 @@ export default {
     return {
       data: [],
       imageUrl: null,
+      rows: 0,
+      perPage: 12,
+      currentPage: 1,
     };
   },
   computed: {
@@ -50,12 +53,39 @@ export default {
     },
   },
   mounted() {
-    axios.get("/api/writings").then((res) => {
-      this.data = res.data;
-      console.log(this.data);
-    });
+    let page = this.currentPage - 1;
+    let size = 12;
+    axios
+      .get("/api/writings", {
+        params: {
+          page,
+          size,
+        },
+      })
+      .then((res) => {
+        this.data = res.data.writings;
+
+        this.rows = res.data.totalElements;
+      });
   },
   methods: {
+    getHomeData() {
+      let page = this.currentPage - 1;
+      let size = 12;
+      axios
+        .get("/api/writings", {
+          params: {
+            page,
+            size,
+          },
+        })
+        .then((res) => {
+          this.data = res.data.writings;
+
+          this.rows = res.data.totalElements;
+        });
+    },
+
     goToDetail(id) {
       console.log(id);
       axios.get("/api/writings/" + id).then((res) => {
@@ -66,6 +96,9 @@ export default {
         });
       });
     },
+  },
+  watch: {
+    currentPage: "getHomeData",
   },
 };
 </script>
