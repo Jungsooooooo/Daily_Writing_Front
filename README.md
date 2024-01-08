@@ -1,24 +1,21 @@
-# writing_front
+## 1,일기를 쓰기 위해 만든 프로젝트 프론트
 
-## Project setup
-```
-npm install
-```
+## ⛏사용기술
+### 1. Front-end
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+> vue.js  
+> vue-bootstrap
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## ⚙주요기능
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+> 1. 홈 화면
+>> b-pagination으로 Page 처리된 데이터를 가져오게 끔 구현.
+>> nginx 서버 url로 메인 이미지 보여주게 구현.
+>> 
+> 2. 검색
+>> jpa Repository로 제목 검색할 수 있게 끔 구현.
+>>
+> 3. 쓰기
+>> 제목과 내용으로 구분하여 일기를 적으며 사진도 드래그 & 드랍 할 수 있게끔 구현.
+>>
+> 4. 
