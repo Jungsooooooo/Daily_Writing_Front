@@ -73,10 +73,15 @@ export default {
       // 파일이 이미지인지 확인
       if (file && file.type.startsWith("image/")) {
         // 이미지 파일이면 데이터에 저장
+
+        const formData = new FormData();
+        formData.append("file", file);
+        axios.post("/api/files/upload", formData);
+
         const reader = new FileReader();
         reader.onload = () => {
           this.image = reader.result;
-          this.imageData += "\n" + file.name;
+          this.imageData += "\n" + "![]" + "(" + file.name + ")";
         };
         reader.readAsText(file);
       }
