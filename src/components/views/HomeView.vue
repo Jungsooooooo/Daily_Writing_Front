@@ -6,11 +6,11 @@
         v-for="item in data"
         :title="item.title"
         :key="item.id"
-        img-src="http://192.168.67.128/images/test2.PNG"
+        :img-src="item.mainImageUrl"
         img-alt="Image"
         img-top
         tag="article"
-        style="width: 100px, max-height:10px"
+        style="max-width: 100px, max-height:3rem"
         class="mt-3"
         id="cardEach"
         @click="goToDetail(item.id)"
@@ -73,7 +73,11 @@ export default {
         console.log(res);
         this.$router.push({
           path: "/detail",
-          query: { title: res.data.title, context: res.data.context, id: id },
+          query: {
+            title: res.data.title,
+            context: res.data.context,
+            id: id,
+          },
         });
       });
     },
