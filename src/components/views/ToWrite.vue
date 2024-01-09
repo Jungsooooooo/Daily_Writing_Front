@@ -84,10 +84,11 @@ export default {
       let context = document.getElementsByClassName("writeContext")[0].value;
       var imageInputs = document.querySelectorAll('input[type="image"]');
       let mainImageUrl = imageInputs[0].src;
+      console.log(mainImageUrl);
       const input = {
         title: title,
         context: context,
-        mainImageUrl: mainImageUrl,
+        mainImageUrl: imageInputs[0].src,
       };
 
       axios.post("/api/writings/create", input).then((res) => {
