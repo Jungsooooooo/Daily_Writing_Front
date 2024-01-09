@@ -12,11 +12,24 @@
     </div>
 
     <div class="detailContext">
-      <textarea
-        v-model="contextValue"
-        class="detailContext"
-        readonly
-      ></textarea>
+      <div v-for="(line, index) in contextValue.split('\n')" :key="index">
+        <template v-if="line.startsWith('![]')">
+          <input
+            class="preShowWriting"
+            type="image"
+            :src="extractImageUrl(line)"
+            disabled
+          />
+        </template>
+        <template v-else>
+          <input
+            type="text"
+            v-model="contextValue[index]"
+            class="detailViewBorderLine"
+            readonly
+          />
+        </template>
+      </div>
     </div>
   </div>
 </template>
@@ -36,6 +49,7 @@ export default {
   mounted() {
     const title = this.$route.query.title;
     const context = this.$route.query.context;
+
     const id = this.$route.query.id;
     console.log({ title });
     if (title !== undefined) {
@@ -44,7 +58,13 @@ export default {
       this.id = id;
     }
   },
+  watch: {
+    contextValue: function (newText) {
+      // textarea의 각 줄을 배열로 분리
 
+      this.lines = newText.split("\n");
+    },
+  },
   methods: {
     deleteWriting(id) {
       this.$bvModal
@@ -87,6 +107,14 @@ export default {
           id: this.id,
         },
       });
+    },
+    extractImageUrl(line) {
+      var match = line.match(/\((.*?)\)/);
+      if (match && match[1]) {
+        return match[1].trim();
+      } else {
+        return "";
+      }
     },
   },
 };
