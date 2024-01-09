@@ -82,11 +82,14 @@ export default {
     saveWrite() {
       let title = document.getElementsByClassName("writeTitle")[0].value;
       let context = document.getElementsByClassName("writeContext")[0].value;
-
+      var imageInputs = document.querySelectorAll('input[type="image"]');
+      let mainImageUrl = imageInputs[0].src;
       const input = {
         title: title,
         context: context,
+        mainImageUrl: mainImageUrl,
       };
+
       axios.post("/api/writings/create", input).then((res) => {
         console.log(res.data);
         this.$bvModal
