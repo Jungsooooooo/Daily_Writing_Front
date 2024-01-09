@@ -8,9 +8,9 @@
         :key="item.id"
         :img-src="item.mainImageUrl"
         img-alt="Image"
-        img-top
+        img-height="150px"
         tag="article"
-        style="max-width: 100px, max-height:3rem"
+        style="max-width: 20rem, max-height:3rem"
         class="mt-3"
         id="cardEach"
         @click="goToDetail(item.id)"

@@ -12,6 +12,10 @@
   width: calc(25% - 16px);
 }
 
+.card-img {
+  padding: 30px;
+}
+
 .itemContext {
   overflow: hidden;
   text-overflow: ellipsis;
