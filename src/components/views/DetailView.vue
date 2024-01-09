@@ -24,7 +24,7 @@
         <template v-else>
           <input
             type="text"
-            v-model="contextValue[index]"
+            v-model="contextValue.split('\n')[index]"
             class="detailViewBorderLine"
             readonly
           />
