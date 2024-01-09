@@ -12,7 +12,11 @@
     </div>
 
     <div class="detailContext">
-      <p>{{ $route.query.context }}</p>
+      <textarea
+        v-model="contextValue"
+        class="detailContext"
+        readonly
+      ></textarea>
     </div>
   </div>
 </template>
