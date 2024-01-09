@@ -42,7 +42,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      image: null,
+      image: "",
       imageData: "",
       contextInput: "",
     };
@@ -74,18 +74,28 @@ export default {
       if (file && file.type.startsWith("image/")) {
         // 이미지 파일이면 데이터에 저장
 
-        const formData = new FormData();
-        formData.append("file", file);
-        axios.post("/api/files/upload", formData);
-
         const reader = new FileReader();
-        reader.onload = () => {
-          this.image = reader.result;
+
+        reader.onload = (e) => {
+          this.image = e.target.result.split(",")[1];
           this.imageData += "\n" + "![]" + "(" + file.name + ")";
         };
-        reader.readAsText(file);
+
+        reader.readAsDataURL(file);
       }
+      const formData = new FormData();
+      // formData.append("file", this.image);
+      console.log(this.image);
+      setTimeout(() => {
+        axios.post("/api/files/upload", {
+          imageInfo: this.image,
+          imageName: file.name,
+        });
+      }, 100);
     },
+    // readfile(file){
+
+    // }
 
     contextInput() {},
   },
