@@ -9,7 +9,6 @@
           wrap="soft"
           @dragover.prevent
           @drop="handleDrop"
-          @input="contextInput"
         />
       </div>
       <footer class="saveWriteCol">
@@ -33,6 +32,7 @@ export default {
       titleValue: "",
       contextValue: "",
       id: "",
+      images: [],
     };
   },
   mounted() {
@@ -77,7 +77,8 @@ export default {
         const reader = new FileReader();
         reader.onload = () => {
           this.image = reader.result;
-          this.contextValue += "\n" + file.name;
+          this.contextValue += "\n" + "![]" + "(" + file.name + ")";
+          this.images += "![]" + "(" + file.name + ",";
         };
         reader.readAsText(file);
       }
