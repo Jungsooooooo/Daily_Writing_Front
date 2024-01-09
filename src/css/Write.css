@@ -24,6 +24,25 @@
   resize: none; /* 사용자가 크기를 조절하지 못하도록 설정 */
 }
 
+.preShowImageWriting {
+  width: inherit;
+}
+.preShowTextWriting {
+  border-style: none;
+  width: 100%;
+  resize: none;
+}
+
+input {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.preShowTitle {
+  border-style: none;
+  width: 100%;
+}
+
 .saveWrite {
   background-color: lightseagreen !important;
   font-weight: bold !important;
