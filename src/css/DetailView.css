@@ -11,6 +11,7 @@
 
 .preShowWriting {
   resize: none; /* 사용자가 크기를 조절하지 못하도록 설정 */
+  max-width: 50rem;
 }
 
 .detailViewBorderLine {

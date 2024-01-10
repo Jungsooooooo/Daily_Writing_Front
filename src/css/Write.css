@@ -26,6 +26,7 @@
 
 .preShowImageWriting {
   width: inherit;
+  max-width: 50rem;
 }
 .preShowTextWriting {
   border-style: none;
