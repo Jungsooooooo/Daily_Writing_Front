@@ -124,7 +124,7 @@ export default {
 
         reader.onload = (e) => {
           this.image = e.target.result.split(",")[1];
-          this.imageData +=
+          this.contextValue +=
             "\n" +
             "![]" +
             "(" +
