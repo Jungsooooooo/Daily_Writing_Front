@@ -43,6 +43,7 @@
                 ref="dynamicTextarea"
                 :style="{ height: dynamicHeight }"
                 readonly
+                disabled
               />
             </template>
           </div>
