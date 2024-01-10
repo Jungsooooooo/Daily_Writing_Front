@@ -1,5 +1,8 @@
 .searchBar {
-  margin-top: 5rem;
+  margin-top: 10rem;
+  width: 100%;
+  justify-content: flex-start;
+  display: flex;
 }
 
 .itemContext {
@@ -15,12 +18,12 @@
 
 #cardEach {
   cursor: pointer;
-  width: calc(25% - 16px);
+  width: calc(25% - 17px);
 }
 
 .card-img .card-img-top {
   padding: 30px;
-  object-fit: contain !;
+  object-fit: contain;
 }
 
 .searchCard {

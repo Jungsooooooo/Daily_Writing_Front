@@ -1,18 +1,16 @@
 <template>
   <div>
     <div class="searchBar">
-      <b-row>
-        <b-col cols="4"></b-col>
-        <b-col cols="4" align-self="center">
-          <b-input-group class="mt3">
-            <b-form-input
-              placeholder="검색어를 입력해주세요"
-              id="searchTitle"
-            ></b-form-input>
-            <b-button @click="search()">Search</b-button>
-          </b-input-group>
-        </b-col>
-      </b-row>
+      <b-col cols="4"></b-col>
+      <b-col cols="4" align-self="center">
+        <b-input-group>
+          <b-form-input
+            placeholder="검색어를 입력해주세요"
+            id="searchTitle"
+          ></b-form-input>
+          <b-button @click="search()">Search</b-button>
+        </b-input-group>
+      </b-col>
     </div>
 
     <div v-if="writingList.length > 0" class="searchCard">
@@ -53,18 +51,6 @@ export default {
       currentPage: 1,
       maxCardsPerRow: 4, // 한 줄에 표시할 최대 카드 수
     };
-  },
-  computed: {
-    groupedData() {
-      const groupSize = 4;
-      const result = [];
-
-      for (let i = 0; i < this.writingList.length; i += groupSize) {
-        result.push(this.writingList.slice(i, i + groupSize));
-      }
-
-      return result;
-    },
   },
 
   methods: {
