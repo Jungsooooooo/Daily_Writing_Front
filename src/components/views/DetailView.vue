@@ -22,11 +22,12 @@
           />
         </template>
         <template v-else>
-          <input
+          <textarea
             type="text"
             v-model="contextValue.split('\n')[index]"
             class="detailViewBorderLine"
             readonly
+            disabled
           />
         </template>
       </div>
