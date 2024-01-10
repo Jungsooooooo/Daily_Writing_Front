@@ -31,4 +31,8 @@ textarea:disabled {
   background-color: #ffffff;
   resize: none;
 }
+.page-item.active .page-link {
+  background-color: lightseagreen !important;
+  border-color: lightseagreen !important;
+}
 </style>
