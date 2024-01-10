@@ -12,3 +12,20 @@
 .nullCheck {
   text-align: center;
 }
+
+#cardEach {
+  cursor: pointer;
+  width: calc(25% - 16px);
+}
+
+.card-img .card-img-top {
+  padding: 30px;
+  object-fit: contain !;
+}
+
+.searchCard {
+  margin-top: 5em !important;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  display: flex;
+}

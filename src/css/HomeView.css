@@ -2,18 +2,21 @@
   /* display: flex; */
   margin-top: 5em !important;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   display: flex;
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 #cardEach {
-  margin-left: 3em;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   cursor: pointer;
-  width: calc(25% - 16px);
 }
 
 .card-img {
   padding: 30px;
+  object-fit: contain;
 }
 
 .itemContext {
