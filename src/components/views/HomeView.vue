@@ -1,23 +1,24 @@
 <template>
-  <div>
+  <div class="home">
     <div class="homeCard">
-      <!-- <b-card-group deck v-for="(group, index) in groupedData" :key="index"> -->
       <b-card
         v-for="item in data"
         :title="item.title"
         :key="item.id"
-        :img-src="item.mainImageUrl"
+        :img-src="
+          item.mainImageUrl == null
+            ? 'http://192.168.67.128/images/noImage.jpg'
+            : item.mainImageUrl
+        "
         img-alt="Image"
         img-height="150px"
         tag="article"
-        style="max-width: 20rem, max-height:3rem"
         class="mt-3"
         id="cardEach"
         @click="goToDetail(item.id)"
       >
         <p class="itemContext">{{ item.context }}</p>
       </b-card>
-      <!-- </b-card-group> -->
     </div>
     <div class="pagingColumn">
       <b-pagination
@@ -59,6 +60,8 @@ export default {
           },
         })
         .then((res) => {
+          console.log(res.data.writings.length);
+
           this.data = res.data.writings;
 
           this.rows = res.data.totalElements;

@@ -14,28 +14,29 @@
         </b-col>
       </b-row>
     </div>
-    <div class="homeCard">
-      <div v-if="writingList.length > 0">
-        <b-card-group deck v-for="(group, index) in groupedData" :key="index">
-          <b-card
-            v-for="item in group"
-            :title="item.title"
-            :key="item.id"
-            img-src="192.168.75.128/home/user/Pictures/diary_picture/1123.jpg"
-            img-alt="Image"
-            img-top
-            tag="article"
-            style="max-width: 10rem, max-height:10px"
-            class="mt-3"
-            id="cardEach"
-            @click="goToDetail(item.id)"
-          >
-            <p class="itemContext">{{ item.context }}</p>
-          </b-card>
-        </b-card-group>
-      </div>
-      <div v-else class="nullCheck">{{ nullCheck }}</div>
+
+    <div v-if="writingList.length > 0" class="searchCard">
+      <b-card
+        v-for="item in writingList"
+        :title="item.title"
+        :key="item.id"
+        :img-src="
+          item.mainImageUrl == null
+            ? 'http://192.168.67.128/images/noImage.jpg'
+            : item.mainImageUrl
+        "
+        img-alt="Image"
+        img-height="150px"
+        tag="article"
+        class="mt-3"
+        id="cardEach"
+        @click="goToDetail(item.id)"
+      >
+        <p class="itemContext">{{ item.context }}</p>
+      </b-card>
     </div>
+
+    <div v-else class="nullCheck">{{ nullCheck }}</div>
   </div>
 </template>
 
@@ -48,6 +49,9 @@ export default {
     return {
       writingList: [],
       nullCheck: "",
+      perPage: 12,
+      currentPage: 1,
+      maxCardsPerRow: 4, // 한 줄에 표시할 최대 카드 수
     };
   },
   computed: {
