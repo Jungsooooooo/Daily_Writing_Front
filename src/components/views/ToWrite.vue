@@ -2,7 +2,7 @@
   <div>
     <b-container fluid>
       <b-row>
-        <b-col cols="6">
+        <b-col cols="6" class="writePosition">
           <input
             class="writeTitle"
             placeholder="제목을 입력해주세요"
@@ -125,9 +125,6 @@ export default {
 
         reader.readAsDataURL(file);
       }
-      const formData = new FormData();
-      // formData.append("file", this.image);
-      console.log(this.image);
       setTimeout(() => {
         axios.post("/api/files/upload", {
           imageInfo: this.image,
