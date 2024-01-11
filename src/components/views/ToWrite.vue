@@ -83,7 +83,9 @@ export default {
     saveWrite() {
       let title = document.getElementsByClassName("writeTitle")[0].value;
       let context = document.getElementsByClassName("writeContext")[0].value;
-      var imageInputs = document.querySelectorAll('input[type="image"]');
+      let imageInputs = document.querySelectorAll('input[type="image"]');
+
+      let arrayImageInputs = Array.prototype.slice.call(imageInputs);
 
       let mainImageUrl = null;
       if (imageInputs.length === 0) {
@@ -91,6 +93,12 @@ export default {
       } else {
         mainImageUrl = imageInputs[0].src;
       }
+
+      let fliePathList = arrayImageInputs.map((element) => {
+        return element.src.split("/").pop();
+      });
+
+      // axios.post("/api/files/delete", fliePathList);
 
       const input = {
         title: title,
