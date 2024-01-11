@@ -84,7 +84,7 @@ export default {
       let title = document.getElementsByClassName("writeTitle")[0].value;
       let context = document.getElementsByClassName("writeContext")[0].value;
       var imageInputs = document.querySelectorAll('input[type="image"]');
-      console.log(imageInputs);
+
       let mainImageUrl = null;
       if (imageInputs.length === 0) {
         mainImageUrl = null;

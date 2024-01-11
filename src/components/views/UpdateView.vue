@@ -96,9 +96,18 @@ export default {
       let title = document.getElementsByClassName("writeTitle")[0].value;
       let context = document.getElementsByClassName("writeContext")[0].value;
       let id = this.id;
+      var imageInputs = document.querySelectorAll('input[type="image"]');
+
+      let mainImageUrl = null;
+      if (imageInputs.length === 0) {
+        mainImageUrl = null;
+      } else {
+        mainImageUrl = imageInputs[0].src;
+      }
       const input = {
         title: title,
         context: context,
+        mainImageUrl: mainImageUrl,
         id: id,
       };
       axios.post("/api/writings/update", input).then((res) => {
