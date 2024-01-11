@@ -27,7 +27,7 @@
         img-height="150px"
         tag="article"
         class="mt-3"
-        id="cardEach"
+        id="cardSearchEach"
         @click="goToDetail(item.id)"
       >
         <p class="itemContext">{{ item.context }}</p>

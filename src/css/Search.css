@@ -16,9 +16,9 @@
   text-align: center;
 }
 
-#cardEach {
+#cardSearchEach {
   cursor: pointer;
-  width: calc(25% - 17px);
+  width: 70rem;
 }
 
 .card-img .card-img-top {
