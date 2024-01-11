@@ -29,6 +29,8 @@
 .searchCard {
   margin-top: 5em !important;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  flex-direction: column; /* 컨테이너를 세로로 배치 */
+  justify-content: center;
+  align-items: center;
   display: flex;
 }
