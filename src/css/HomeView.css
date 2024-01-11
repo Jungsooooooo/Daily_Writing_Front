@@ -1,5 +1,4 @@
 .homeCard {
-  /* display: flex; */
   margin-top: 5em !important;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -11,6 +10,7 @@
 #cardEach {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+  width: calc(25% - 17px);
   cursor: pointer;
 }
 
