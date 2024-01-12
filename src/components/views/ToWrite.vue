@@ -106,7 +106,7 @@ export default {
       if (imageInputs.length === 0) {
         mainImageUrl = null;
       } else {
-        mainImageUrl = imageInputs[0].src;
+        mainImageUrl = imageInputs[0].src.split("/").pop();
       }
 
       let fliePathList = arrayImageInputs.map((element) => {
