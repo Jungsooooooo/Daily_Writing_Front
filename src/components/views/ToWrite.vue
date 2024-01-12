@@ -70,7 +70,15 @@ export default {
       title: "",
       titlePreview: "",
       dynamicHeight: "auto",
+      isRefreshed: false,
     };
+  },
+  beforeRouteUpdate(to, from, next) {
+    console.log(from);
+    if (from.name !== null) {
+      this.isRefreshed = true;
+    }
+    // next();
   },
   watch: {
     imageData: function (newText) {
@@ -78,6 +86,13 @@ export default {
 
       this.lines = newText.split("\n");
     },
+  },
+  mounted() {
+    window.addEventListener("beforeunload", this.leave);
+  },
+
+  beforeUnmount() {
+    window.removeEventListener("beforeunload", this.leave);
   },
   methods: {
     saveWrite() {
@@ -98,7 +113,7 @@ export default {
         return element.src.split("/").pop();
       });
 
-      // axios.post("/api/files/delete", fliePathList);
+      axios.post("/api/files/delete", fliePathList);
 
       const input = {
         title: title,
@@ -107,6 +122,10 @@ export default {
       };
 
       axios.post("/api/writings/create", input).then((res) => {
+        const input = {
+          id: res.data.id,
+        };
+        axios.put("/api/files/update-folder-name", input);
         this.$bvModal
           .msgBoxOk(res.data.title + "이 작성되었습니다.")
           .then(() => {
@@ -132,7 +151,7 @@ export default {
             "\n" +
             "![]" +
             "(" +
-            "http://192.168.67.128/images/" +
+            "http://192.168.67.128/images/temp/" +
             file.name +
             ")";
         };
@@ -144,7 +163,7 @@ export default {
           imageInfo: this.image,
           imageName: file.name,
         });
-      }, 100);
+      }, 500);
     },
     extractImageUrl(line) {
       var match = line.match(/\((.*?)\)/);
@@ -160,6 +179,10 @@ export default {
     adjustTextareaHeight() {
       // 입력된 텍스트의 높이에 따라 동적으로 늘어나도록 높이 조절
       this.dynamicHeight = this.$refs.dynamicTextarea.scrollHeight + "px";
+    },
+    leave(event) {
+      event.preventDefault();
+      event.returnValue = "";
     },
   },
 };
