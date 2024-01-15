@@ -8,9 +8,7 @@
         <b-navbar-nav class="ml-auto">
           <b-nav-form>
             <b-icon-search class="searchIcon" @click="goToSearch()" />
-            <b-button size="sm" class="writeButton" @click="goToWrite()"
-              >새 글 쓰기</b-button
-            >
+            <b-button size="sm" class="writeButton" @click="goToWrite()">새 글 쓰기</b-button>
           </b-nav-form>
         </b-navbar-nav>
       </b-collapse>
@@ -30,6 +28,7 @@ export default {
     },
 
     goToWrite() {
+      axios.post("/api/files/create-temp-folder");
       this.$router.push("/write");
       axios.post("/api/files/create-temp-folder").catch((error) => {
         console.error(error);

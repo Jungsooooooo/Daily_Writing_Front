@@ -8,7 +8,7 @@
         :img-src="
           item.mainImageUrl == null
             ? 'http://192.168.75.128/images/noImage/noImage.jpg'
-            : item.mainImageUrl
+            : 'http://192.168.75.128/images/' + item.id + item.mainImageUrl
         "
         img-alt="Image"
         img-height="150px"
@@ -21,11 +21,7 @@
       </b-card>
     </div>
     <div class="pagingColumn">
-      <b-pagination
-        v-model="currentPage"
-        :total-rows="rows"
-        :per-page="perPage"
-      ></b-pagination>
+      <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage"></b-pagination>
     </div>
   </div>
 </template>

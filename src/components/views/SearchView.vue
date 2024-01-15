@@ -4,10 +4,7 @@
       <b-col cols="4"></b-col>
       <b-col cols="4" align-self="center">
         <b-input-group>
-          <b-form-input
-            placeholder="검색어를 입력해주세요"
-            id="searchTitle"
-          ></b-form-input>
+          <b-form-input placeholder="검색어를 입력해주세요" id="searchTitle"></b-form-input>
           <b-button @click="search()">Search</b-button>
         </b-input-group>
       </b-col>
@@ -18,11 +15,7 @@
         v-for="item in writingList"
         :title="item.title"
         :key="item.id"
-        :img-src="
-          item.mainImageUrl == null
-            ? 'http://192.168.75.128/images/noImage.jpg'
-            : item.mainImageUrl
-        "
+        :img-src="item.mainImageUrl == null ? 'http://192.168.75.128/images/noImage.jpg' : item.mainImageUrl"
         img-alt="Image"
         img-height="150px"
         tag="article"
@@ -62,8 +55,7 @@ export default {
         this.writingList = res.data;
 
         if (checkData.length == 0) {
-          this.nullCheck =
-            "'" + title.title + "'" + "에 해당하는 데이터가 없습니다";
+          this.nullCheck = "'" + title.title + "'" + "에 해당하는 데이터가 없습니다";
         }
       });
     },
