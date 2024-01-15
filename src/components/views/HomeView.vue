@@ -8,7 +8,7 @@
         :img-src="
           item.mainImageUrl == null
             ? 'http://192.168.75.128/images/noImage/noImage.jpg'
-            : 'http://192.168.75.128/images/' + item.id + item.mainImageUrl
+            : 'http://192.168.75.128/images/' + item.id + '/' + item.mainImageUrl
         "
         img-alt="Image"
         img-height="150px"

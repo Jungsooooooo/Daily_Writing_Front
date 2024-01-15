@@ -60,6 +60,7 @@ export default {
       titlePreview: "",
       dynamicHeight: "auto",
       isRefreshed: false,
+      mainImageName: [],
     };
   },
   beforeRouteUpdate(to, from, next) {
@@ -98,6 +99,8 @@ export default {
       } else {
         mainImageUrl = imageInputs[0].src.split("/").pop();
       }
+      console.log({ imageInputs });
+      console.log({ mainImageUrl });
 
       let fliePathList = arrayImageInputs.map((element) => {
         return element.src.split("/").pop();
@@ -160,7 +163,7 @@ export default {
         // 이미지 파일이면 데이터에 저장
 
         const reader = new FileReader();
-
+        this.mainImageName = encodeURIComponent(file.name);
         reader.onload = (e) => {
           this.image = e.target.result.split(",")[1];
           this.imageData += "\n" + "![]" + "(" + "http://192.168.75.128/images/temp/" + file.name + ")";
@@ -199,3 +202,7 @@ export default {
 
 import "../../css/Write.css";
 </script>
+<head>
+  <meta charset="UTF-8">
+  <!-- 다른 head 요소들도 필요에 따라 추가할 수 있습니다. -->
+</head>
