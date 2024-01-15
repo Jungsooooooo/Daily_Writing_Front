@@ -5,7 +5,11 @@
         v-for="item in data"
         :title="item.title"
         :key="item.id"
-        :img-src="item.mainImageUrl == null ? 'http://192.168.75.128/images/noImage/noImage.jpg' : item.mainImageUrl"
+        :img-src="
+          item.mainImageUrl == null
+            ? 'http://192.168.75.128/images/noImage/noImage.jpg'
+            : item.mainImageUrl
+        "
         img-alt="Image"
         img-height="150px"
         tag="article"
@@ -17,7 +21,11 @@
       </b-card>
     </div>
     <div class="pagingColumn">
-      <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage"></b-pagination>
+      <b-pagination
+        v-model="currentPage"
+        :total-rows="rows"
+        :per-page="perPage"
+      ></b-pagination>
     </div>
   </div>
 </template>
@@ -57,6 +65,9 @@ export default {
           this.data = res.data.writings;
 
           this.rows = res.data.totalElements;
+        })
+        .catch((error) => {
+          console.error("An error occurred while saving the text:", error);
         });
 
       return this.data;
@@ -64,17 +75,22 @@ export default {
 
     goToDetail(id) {
       console.log(id);
-      axios.get("/api/writings/" + id).then((res) => {
-        console.log(res);
-        this.$router.push({
-          path: "/detail",
-          query: {
-            title: res.data.title,
-            context: res.data.context,
-            id: id,
-          },
+      axios
+        .get("/api/writings/" + id)
+        .then((res) => {
+          console.log(res);
+          this.$router.push({
+            path: "/detail",
+            query: {
+              title: res.data.title,
+              context: res.data.context,
+              id: id,
+            },
+          });
+        })
+        .catch((error) => {
+          console.error("An error occurred while saving the text:", error);
         });
-      });
     },
   },
   watch: {

@@ -82,21 +82,32 @@ export default {
         })
         .then((value) => {
           if (value) {
-            axios.delete("/api/writings/delete/" + id).then(() => {
-              this.$bvModal
-                .msgBoxOk("삭제되었습니다.", {
-                  size: "sm",
-                  buttonSize: "sm",
-                  centered: true,
-                  okTitle: "예",
-                })
-                .then(() => {
-                  this.$router.push("/");
-                });
-            });
+            axios
+              .delete("/api/writings/delete/" + id)
+              .then(() => {
+                this.$bvModal
+                  .msgBoxOk("삭제되었습니다.", {
+                    size: "sm",
+                    buttonSize: "sm",
+                    centered: true,
+                    okTitle: "예",
+                  })
+                  .then(() => {
+                    this.$router.push("/");
+                  });
+              })
+              .catch((error) => {
+                console.error(
+                  "An error occurred while saving the text:",
+                  error
+                );
+              });
           } else {
             return null;
           }
+        })
+        .catch((error) => {
+          console.error("An error occurred while saving the text:", error);
         });
     },
     updateWriting() {

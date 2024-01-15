@@ -3,7 +3,11 @@
     <b-container fluid>
       <b-row>
         <b-col cols="6" class="writePosition">
-          <input class="writeTitle" placeholder="제목을 입력해주세요" @input="updateTitlePreview" />
+          <input
+            class="writeTitle"
+            placeholder="제목을 입력해주세요"
+            @input="updateTitlePreview"
+          />
 
           <div>
             <textarea
@@ -16,15 +20,20 @@
             />
           </div>
           <footer class="saveWriteCol">
-            <b-button size="sm" class="saveWrite" @click="saveWrite()">저장</b-button>
+            <b-button size="sm" class="saveWrite" @click="saveWrite()"
+              >저장</b-button
+            >
           </footer>
         </b-col>
-
         <b-col cols="6">
           <h1><input type="text" v-model="title" class="preShowTitle" /></h1>
           <div v-for="(line, index) in imageData.split('\n')" :key="index">
             <template v-if="line.startsWith('![]') && line.endsWith(')')">
-              <input class="preShowImageWriting" type="image" :src="extractImageUrl(line)" />
+              <input
+                class="preShowImageWriting"
+                type="image"
+                :src="extractImageUrl(line)"
+              />
             </template>
             <template v-else>
               <textarea
@@ -114,27 +123,39 @@ export default {
 
       let checkId;
 
-      axios.post("/api/writings/create", input).then((res) => {
-        checkId = res.data.id;
-        const input = {
-          id: res.data.id,
-        };
-        axios.put("/api/files/update-folder-name", input).then(() => {
-          let changeLineToHi = this.lines.map((element) => {
-            return element.replace(/\/temp\//g, "/" + checkId + "/");
-          });
-
-          const finalUpdate = {
-            id: checkId,
-            context: changeLineToHi.join("\n"),
+      axios
+        .post("/api/writings/create", input)
+        .then((res) => {
+          checkId = res.data.id;
+          const input = {
+            id: res.data.id,
           };
+          axios
+            .put("/api/files/update-folder-name", input)
+            .then(() => {
+              let changeLineToHi = this.lines.map((element) => {
+                return element.replace(/\/temp\//g, "/" + checkId + "/");
+              });
 
-          axios.put("/api/writings/update", finalUpdate);
+              const finalUpdate = {
+                id: checkId,
+                context: changeLineToHi.join("\n"),
+              };
+
+              axios.put("/api/writings/update", finalUpdate);
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+          this.$bvModal
+            .msgBoxOk(res.data.title + "이 작성되었습니다.")
+            .then(() => {
+              this.$router.push("/");
+            });
+        })
+        .catch((error) => {
+          console.error(error);
         });
-        this.$bvModal.msgBoxOk(res.data.title + "이 작성되었습니다.").then(() => {
-          this.$router.push("/");
-        });
-      });
     },
     handleDrop(event) {
       event.preventDefault();
@@ -150,7 +171,13 @@ export default {
 
         reader.onload = (e) => {
           this.image = e.target.result.split(",")[1];
-          this.imageData += "\n" + "![]" + "(" + "http://192.168.75.128/images/temp/" + file.name + ")";
+          this.imageData +=
+            "\n" +
+            "![]" +
+            "(" +
+            "http://192.168.75.128/images/temp/" +
+            file.name +
+            ")";
         };
 
         reader.readAsDataURL(file);
@@ -160,7 +187,7 @@ export default {
           imageInfo: this.image,
           imageName: file.name,
         });
-      }, 500);
+      });
     },
     extractImageUrl(line) {
       var match = line.match(/\((.*?)\)/);

@@ -116,6 +116,9 @@ export default {
           .msgBoxOk(res.data.title + "이 수정되었습니다.")
           .then(() => {
             this.$router.push("/");
+          })
+          .catch((error) => {
+            console.error("An error occurred while saving the text:", error);
           });
       });
     },
@@ -137,7 +140,7 @@ export default {
             "\n" +
             "![]" +
             "(" +
-            "http://192.168.67.128/images/" +
+            "http://192.168.75.128/images/" +
             file.name +
             ")";
         };
@@ -147,10 +150,14 @@ export default {
 
       // formData.append("file", this.image);
       setTimeout(() => {
-        axios.post("/api/files/upload", {
-          imageInfo: this.image,
-          imageName: file.name,
-        });
+        axios
+          .post("/api/files/upload", {
+            imageInfo: this.image,
+            imageName: file.name,
+          })
+          .catch((error) => {
+            console.error("An error occurred while saving the text:", error);
+          });
       }, 100);
     },
     updateTitlePreview() {

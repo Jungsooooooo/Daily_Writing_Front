@@ -20,7 +20,7 @@
         :key="item.id"
         :img-src="
           item.mainImageUrl == null
-            ? 'http://192.168.67.128/images/noImage.jpg'
+            ? 'http://192.168.75.128/images/noImage.jpg'
             : item.mainImageUrl
         "
         img-alt="Image"
@@ -69,13 +69,18 @@ export default {
     },
     goToDetail(id) {
       console.log(id);
-      axios.get("/api/writings/" + id).then((res) => {
-        console.log(res);
-        this.$router.push({
-          path: "/detail",
-          query: { title: res.data.title, context: res.data.context, id: id },
+      axios
+        .get("/api/writings/" + id)
+        .then((res) => {
+          console.log(res);
+          this.$router.push({
+            path: "/detail",
+            query: { title: res.data.title, context: res.data.context, id: id },
+          });
+        })
+        .catch((error) => {
+          console.error("An error occurred while saving the text:", error);
         });
-      });
     },
   },
 };
