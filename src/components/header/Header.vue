@@ -31,6 +31,9 @@ export default {
 
     goToWrite() {
       this.$router.push("/write");
+      axios.post("/api/files/create-temp-folder").catch((error) => {
+        console.error(error);
+      });
     },
 
     goToSearch() {
