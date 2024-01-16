@@ -3,48 +3,21 @@
     <b-container fluid>
       <b-row>
         <b-col cols="6" class="writePosition">
-          <input
-            v-model="titleValue"
-            class="writeTitle"
-            @input="updateTitlePreview"
-          />
+          <input v-model="titleValue" class="writeTitle" @input="updateTitlePreview" />
           <div>
-            <textarea
-              v-model="contextValue"
-              class="writeContext"
-              wrap="soft"
-              @dragover.prevent
-              @drop="handleDrop"
-            />
+            <textarea v-model="contextValue" class="writeContext" wrap="soft" @dragover.prevent @drop="handleDrop" />
           </div>
           <footer class="saveWriteCol">
-            <b-button size="sm" class="saveWrite" @click="updateWrite()"
-              >수정</b-button
-            >
+            <b-button size="sm" class="saveWrite" @click="updateWrite()">수정</b-button>
           </footer>
         </b-col>
         <b-col cols="6">
           <h1>
-            <input
-              type="text"
-              v-model="titleValue"
-              class="preShowTitle"
-              disabled
-            />
+            <input type="text" v-model="titleValue" class="preShowTitle" disabled />
           </h1>
           <div v-for="(line, index) in contextValue.split('\n')" :key="index">
-            <template
-              v-if="
-                line.startsWith('![]') &&
-                line.endsWith(')') &&
-                showImage == true
-              "
-            >
-              <input
-                class="preShowImageWriting"
-                type="image"
-                :src="extractImageUrl(line)"
-              />
+            <template v-if="line.startsWith('![]') && line.endsWith(')') && showImage == true">
+              <input class="preShowImageWriting" type="image" :src="extractImageUrl(line)" />
             </template>
             <template v-else>
               <textarea
@@ -97,6 +70,7 @@ export default {
       this.contextValue = context;
       this.id = id;
     }
+    this.showImage = true;
 
     window.addEventListener("keydown", this.handleKeyDown);
   },
@@ -121,7 +95,7 @@ export default {
       if (imageInputs.length === 0) {
         mainImageUrl = null;
       } else {
-        mainImageUrl = imageInputs[0].src;
+        mainImageUrl = imageInputs[0].src.split("/").pop();
       }
 
       let arrayImageInputs = Array.prototype.slice.call(imageInputs);
@@ -138,11 +112,9 @@ export default {
       };
       axios.put("/api/writings/update", input).then((res) => {
         console.log(res.data);
-        this.$bvModal
-          .msgBoxOk(res.data.title + "이 수정되었습니다.")
-          .then(() => {
-            this.$router.push("/");
-          });
+        this.$bvModal.msgBoxOk(res.data.title + "이 수정되었습니다.").then(() => {
+          this.$router.push("/");
+        });
       });
     },
     handleDrop(event) {
@@ -160,15 +132,7 @@ export default {
 
         reader.onload = (e) => {
           this.image = e.target.result.split(",")[1];
-          this.contextValue +=
-            "\n" +
-            "![]" +
-            "(" +
-            "http://192.168.67.128/images/" +
-            this.id +
-            "/" +
-            file.name +
-            ")";
+          this.contextValue += "\n" + "![]" + "(" + "http://192.168.75.128/images/" + this.id + "/" + file.name + ")";
         };
 
         reader.readAsDataURL(file);
