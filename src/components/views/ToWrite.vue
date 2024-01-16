@@ -3,7 +3,11 @@
     <b-container fluid>
       <b-row>
         <b-col cols="6" class="writePosition">
-          <input class="writeTitle" placeholder="제목을 입력해주세요" @input="updateTitlePreview" />
+          <input
+            class="writeTitle"
+            placeholder="제목을 입력해주세요"
+            @input="updateTitlePreview"
+          />
 
           <div>
             <textarea
@@ -16,14 +20,26 @@
             />
           </div>
           <footer class="saveWriteCol">
-            <b-button size="sm" class="saveWrite" @click="saveWrite()">저장</b-button>
+            <b-button size="sm" class="saveWrite" @click="saveWrite()"
+              >저장</b-button
+            >
           </footer>
         </b-col>
         <b-col cols="6">
           <h1><input type="text" v-model="title" class="preShowTitle" /></h1>
           <div v-for="(line, index) in imageData.split('\n')" :key="index">
-            <template v-if="line.startsWith('![]') && line.endsWith(')')">
-              <input class="preShowImageWriting" type="image" :src="extractImageUrl(line)" />
+            <template
+              v-if="
+                line.startsWith('![]') &&
+                line.endsWith(')') &&
+                showImage == true
+              "
+            >
+              <input
+                class="preShowImageWriting"
+                type="image"
+                :src="extractImageUrl(line)"
+              />
             </template>
             <template v-else>
               <textarea
@@ -61,10 +77,10 @@ export default {
       dynamicHeight: "auto",
       isRefreshed: false,
       mainImageName: [],
+      showImage: false,
     };
   },
   beforeRouteUpdate(to, from, next) {
-    console.log(from);
     if (from.name !== null) {
       this.isRefreshed = true;
     }
@@ -140,9 +156,11 @@ export default {
               axios.put("/api/writings/update", finalUpdate);
             })
             .then(() => {
-              this.$bvModal.msgBoxOk(res.data.title + "이 작성되었습니다.").then(() => {
-                this.$router.push("/");
-              });
+              this.$bvModal
+                .msgBoxOk(res.data.title + "이 작성되었습니다.")
+                .then(() => {
+                  this.$router.push("/");
+                });
             })
             .catch((error) => {
               console.error(error);
@@ -154,9 +172,10 @@ export default {
     },
     handleDrop(event) {
       event.preventDefault();
-
+      this.showImage = false;
       // 드롭된 파일 가져오기
       const file = event.dataTransfer.files[0];
+      console.log(event.dataTransfer.files);
       console.log({ file });
       // 파일이 이미지인지 확인
       if (file && file.type.startsWith("image/")) {
@@ -166,7 +185,14 @@ export default {
         this.mainImageName = encodeURIComponent(file.name);
         reader.onload = (e) => {
           this.image = e.target.result.split(",")[1];
-          this.imageData += "\n" + "![]" + "(" + "http://192.168.75.128/images/temp/" + file.name + ")";
+          console.log(this.image);
+          this.imageData +=
+            "\n" +
+            "![]" +
+            "(" +
+            "http://192.168.67.128/images/temp/" +
+            file.name +
+            ")";
         };
 
         reader.readAsDataURL(file);
@@ -176,7 +202,11 @@ export default {
           imageInfo: this.image,
           imageName: file.name,
         });
-      });
+      }, 300);
+
+      setTimeout(() => {
+        this.showImage = true;
+      }, 3000);
     },
     extractImageUrl(line) {
       var match = line.match(/\((.*?)\)/);
