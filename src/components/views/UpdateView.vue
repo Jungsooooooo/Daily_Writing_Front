@@ -62,6 +62,7 @@
       </b-row>
       <div>
         <b-modal ref="saveModal"></b-modal>
+        <b-overlay :show="showLoading" no-wrap> </b-overlay>
       </div>
     </b-container>
   </div>
@@ -83,6 +84,7 @@ export default {
       dynamicHeight: "auto",
       inputContainer: document.getElementById("inputContainer"),
       showImage: false,
+      showLoading: false,
     };
   },
   mounted() {
@@ -145,7 +147,8 @@ export default {
     },
     handleDrop(event) {
       event.preventDefault();
-
+      this.showLoading = true;
+      this.showImage = false;
       // 드롭된 파일 가져오기
       const file = event.dataTransfer.files[0];
       console.log({ file });
@@ -181,6 +184,7 @@ export default {
       }, 300);
       setTimeout(() => {
         this.showImage = true;
+        this.showLoading = false;
       }, 3000);
     },
     updateTitlePreview() {

@@ -57,6 +57,7 @@
       </b-row>
     </b-container>
     <b-modal ref="saveModal"></b-modal>
+    <b-overlay :show="showLoading" no-wrap> </b-overlay>
   </div>
 </template>
 
@@ -78,6 +79,7 @@ export default {
       isRefreshed: false,
       mainImageName: [],
       showImage: false,
+      showLoading: false,
     };
   },
   beforeRouteUpdate(to, from, next) {
@@ -174,6 +176,7 @@ export default {
     handleDrop(event) {
       event.preventDefault();
       this.showImage = false;
+      this.showLoading = true;
       // 드롭된 파일 가져오기
       const file = event.dataTransfer.files[0];
       console.log(event.dataTransfer.files);
@@ -207,6 +210,7 @@ export default {
 
       setTimeout(() => {
         this.showImage = true;
+        this.showLoading = false;
       }, 3000);
     },
     extractImageUrl(line) {
