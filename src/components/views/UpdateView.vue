@@ -25,7 +25,12 @@
         </b-col>
         <b-col cols="6">
           <h1>
-            <input type="text" v-model="titleValue" class="preShowTitle" />
+            <input
+              type="text"
+              v-model="titleValue"
+              class="preShowTitle"
+              disabled
+            />
           </h1>
           <div v-for="(line, index) in contextValue.split('\n')" :key="index">
             <template

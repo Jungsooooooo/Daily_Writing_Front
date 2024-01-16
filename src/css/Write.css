@@ -48,6 +48,7 @@ input {
 .preShowTitle {
   border-style: none;
   width: 100%;
+  background-color: white;
 }
 
 .saveWrite {
