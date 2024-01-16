@@ -3,12 +3,24 @@
     <b-container fluid>
       <b-row>
         <b-col cols="6" class="writePosition">
-          <input v-model="titleValue" class="writeTitle" @input="updateTitlePreview" />
+          <input
+            v-model="titleValue"
+            class="writeTitle"
+            @input="updateTitlePreview"
+          />
           <div>
-            <textarea v-model="contextValue" class="writeContext" wrap="soft" @dragover.prevent @drop="handleDrop" />
+            <textarea
+              v-model="contextValue"
+              class="writeContext"
+              wrap="soft"
+              @dragover.prevent
+              @drop="handleDrop"
+            />
           </div>
           <footer class="saveWriteCol">
-            <b-button size="sm" class="saveWrite" @click="updateWrite()">수정</b-button>
+            <b-button size="sm" class="saveWrite" @click="updateWrite()"
+              >수정</b-button
+            >
           </footer>
         </b-col>
         <b-col cols="6">
@@ -16,8 +28,18 @@
             <input type="text" v-model="titleValue" class="preShowTitle" />
           </h1>
           <div v-for="(line, index) in contextValue.split('\n')" :key="index">
-            <template v-if="line.startsWith('![]') && line.endsWith(')')">
-              <input class="preShowImageWriting" type="image" :src="extractImageUrl(line)" />
+            <template
+              v-if="
+                line.startsWith('![]') &&
+                line.endsWith(')') &&
+                showImage == true
+              "
+            >
+              <input
+                class="preShowImageWriting"
+                type="image"
+                :src="extractImageUrl(line)"
+              />
             </template>
             <template v-else>
               <textarea
@@ -55,6 +77,7 @@ export default {
       lines: [],
       dynamicHeight: "auto",
       inputContainer: document.getElementById("inputContainer"),
+      showImage: false,
     };
   },
   mounted() {
@@ -67,6 +90,11 @@ export default {
       this.contextValue = context;
       this.id = id;
     }
+
+    window.addEventListener("keydown", this.handleKeyDown);
+  },
+  beforeUnmount() {
+    window.removeEventListener("keydown", this.handleKeyDown);
   },
   watch: {
     contextValue: function (newText) {
@@ -88,6 +116,13 @@ export default {
       } else {
         mainImageUrl = imageInputs[0].src;
       }
+
+      let arrayImageInputs = Array.prototype.slice.call(imageInputs);
+      let fliePathList = arrayImageInputs.map((element) => {
+        return element.src.split("/").pop();
+      });
+
+      axios.post("/api/files/delete", fliePathList);
       const input = {
         title: title,
         context: context,
@@ -96,9 +131,11 @@ export default {
       };
       axios.put("/api/writings/update", input).then((res) => {
         console.log(res.data);
-        this.$bvModal.msgBoxOk(res.data.title + "이 수정되었습니다.").then(() => {
-          this.$router.push("/");
-        });
+        this.$bvModal
+          .msgBoxOk(res.data.title + "이 수정되었습니다.")
+          .then(() => {
+            this.$router.push("/");
+          });
       });
     },
     handleDrop(event) {
@@ -115,7 +152,15 @@ export default {
 
         reader.onload = (e) => {
           this.image = e.target.result.split(",")[1];
-          this.contextValue += "\n" + "![]" + "(" + "http://192.168.75.128/images/" + file.name + ")";
+          this.contextValue +=
+            "\n" +
+            "![]" +
+            "(" +
+            "http://192.168.67.128/images/" +
+            this.id +
+            "/" +
+            file.name +
+            ")";
         };
 
         reader.readAsDataURL(file);
@@ -123,11 +168,15 @@ export default {
 
       // formData.append("file", this.image);
       setTimeout(() => {
-        axios.post("/api/files/upload", {
+        axios.post("/api/files/upload-by-id", {
           imageInfo: this.image,
           imageName: file.name,
+          id: this.id,
         });
-      }, 100);
+      }, 300);
+      setTimeout(() => {
+        this.showImage = true;
+      }, 3000);
     },
     updateTitlePreview() {
       this.title = document.getElementsByClassName("writeTitle")[0].value;
@@ -142,6 +191,11 @@ export default {
         return match[1].trim();
       } else {
         return "";
+      }
+    },
+    handleKeyDown() {
+      if (!this.showImage) {
+        this.showImage = true;
       }
     },
   },

@@ -95,11 +95,12 @@ export default {
   },
   mounted() {
     window.addEventListener("beforeunload", this.leave);
+    window.addEventListener("keydown", this.handleKeyDown);
   },
 
   beforeUnmount() {
-    alert("exit");
     window.removeEventListener("beforeunload", this.leave);
+    window.removeEventListener("keydown", this.handleKeyDown);
   },
   methods: {
     saveWrite() {
@@ -226,6 +227,11 @@ export default {
     leave(event) {
       event.preventDefault();
       event.returnValue = "";
+    },
+    handleKeyDown() {
+      if (!this.showImage) {
+        this.showImage = true;
+      }
     },
   },
 };
