@@ -11,9 +11,9 @@
 > 1. 홈 화면
 >> b-pagination으로 Page 처리된 데이터를 가져오게 끔 구현.
 >> nginx 서버 url로 메인 이미지 보여주게 구현.
->> ![image](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/063dcdb1-3837-4dc5-bbfc-d8c4f245bf07)
->>
->> 메인 화면이고 사진이 없으면 noImage를 보여줌.
+> ![image](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/063dcdb1-3837-4dc5-bbfc-d8c4f245bf07)
+>
+> 메인 화면이고 사진이 없으면 noImage를 보여줌.
 
 >>
 >> 
