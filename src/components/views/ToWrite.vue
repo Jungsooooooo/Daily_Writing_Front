@@ -96,6 +96,7 @@ export default {
     },
   },
   mounted() {
+    document.title = "(작성 중) writing_front";
     window.addEventListener("beforeunload", this.leave);
     window.addEventListener("keydown", this.handleKeyDown);
   },
