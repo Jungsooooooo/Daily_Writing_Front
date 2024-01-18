@@ -15,7 +15,11 @@
         v-for="item in writingList"
         :title="item.title"
         :key="item.id"
-        :img-src="item.mainImageUrl == null ? 'http://192.168.75.128/images/noImage.jpg' : item.mainImageUrl"
+        :img-src="
+          item.mainImageUrl == null
+            ? 'http://192.168.75.128/images/noImage/noImage.jpg'
+            : 'http://192.168.75.128/images/' + item.id + '/' + item.mainImageUrl
+        "
         img-alt="Image"
         img-height="150px"
         tag="article"
@@ -43,6 +47,7 @@ export default {
       perPage: 12,
       currentPage: 1,
       maxCardsPerRow: 4, // 한 줄에 표시할 최대 카드 수
+      id: "",
     };
   },
 
@@ -53,7 +58,7 @@ export default {
       axios.get("/api/writings/search/" + name).then((res) => {
         const checkData = res.data;
         this.writingList = res.data;
-
+        this.id = res.data.id;
         if (checkData.length == 0) {
           this.nullCheck = "'" + title.title + "'" + "에 해당하는 데이터가 없습니다";
         }
