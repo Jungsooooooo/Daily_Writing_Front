@@ -27,6 +27,7 @@
 .preShowImageWriting {
   width: inherit;
   max-width: 50rem;
+  max-height: 30rem;
 }
 
 .preShowImageWriting {
