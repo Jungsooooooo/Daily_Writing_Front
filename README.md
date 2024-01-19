@@ -23,8 +23,7 @@
 > 3. 쓰기
 >> 제목과 내용으로 구분하여 일기를 적으며 사진도 드래그 & 드랍 할 수 있게끔 구현.
 
-![writingexample](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/9a9573cd-7345-4929-95ec-0476e92295fc)
-
+https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/62ba9ecf-ebfb-45eb-bed6-b6b4181c160b
 
 
 
