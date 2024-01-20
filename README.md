@@ -24,11 +24,15 @@
 > 1. 메인화면
 -> ![image](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/063dcdb1-3837-4dc5-bbfc-d8c4f245bf07)
 
-> 2. 검색화면
-> 3. 쓰기화면(-> 제목과 내용으로 구분. 사진도 드래그 & 드랍 할 수 있음.)
--> 
-
+> 2. 쓰기화면(-> 제목과 내용으로 구분. 사진도 드래그 & 드랍 할 수 있음.)
 https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/2e145f89-70ec-4306-9f9c-b2b183a4f87c
+
+> 3. 검색화면
+https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/0dfc4315-9042-4bc1-91ab-67924240345e
+
+> 4. 수정화면
+https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/e874cd4f-38af-4ec2-9fdd-2150d6c8f47c
+
 
 
 
