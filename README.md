@@ -25,14 +25,13 @@
 -> ![image](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/063dcdb1-3837-4dc5-bbfc-d8c4f245bf07)
 
 > 2. 쓰기화면(-> 제목과 내용으로 구분. 사진도 드래그 & 드랍 할 수 있음.)
-https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/2e145f89-70ec-4306-9f9c-b2b183a4f87c
+-> ![writingexample-ezgif com-video-to-gif-converter](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/00243c35-c766-495d-81fb-5bd8f049cc97)
 
 > 3. 검색화면
-https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/0dfc4315-9042-4bc1-91ab-67924240345e
+-> ![ezgif com-video-to-gif-converter](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/3bb0d8ac-8162-4426-a217-be09f6938441)
 
 > 4. 수정화면
-https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/e874cd4f-38af-4ec2-9fdd-2150d6c8f47c
-
+-> ![sujeong](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/c013971a-8bd6-489c-be27-268f1a825336)
 
 
 
