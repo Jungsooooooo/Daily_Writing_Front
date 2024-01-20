@@ -28,10 +28,12 @@
 -> ![writingexample-ezgif com-video-to-gif-converter](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/00243c35-c766-495d-81fb-5bd8f049cc97)
 <br/>
 > 3. 검색화면
-![ezgif com-video-to-gif-converter](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/3bb0d8ac-8162-4426-a217-be09f6938441)
+-> ![ezgif com-video-to-gif-converter](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/a542d0ad-3c46-40f4-8b68-f5f9b12391a7)
+
 <br/>
 > 4. 수정화면
--> ![sujeong](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/c013971a-8bd6-489c-be27-268f1a825336)
+-> ![sujeong](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/679e905e-eff5-46f3-a7fe-322c9eecacbc)
+
 
 
 
