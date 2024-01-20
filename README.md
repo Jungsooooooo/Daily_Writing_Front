@@ -26,11 +26,10 @@
 
 > 2. 쓰기화면(-> 제목과 내용으로 구분. 사진도 드래그 & 드랍 할 수 있음.)
 -> ![writingexample-ezgif com-video-to-gif-converter](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/00243c35-c766-495d-81fb-5bd8f049cc97)
-<br/>
+
 > 3. 검색화면
 -> ![ezgif com-video-to-gif-converter](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/a542d0ad-3c46-40f4-8b68-f5f9b12391a7)
 
-<br/>
 > 4. 수정화면
 -> ![sujeong](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/679e905e-eff5-46f3-a7fe-322c9eecacbc)
 
