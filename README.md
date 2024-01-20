@@ -25,9 +25,7 @@
 -> ![image](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/063dcdb1-3837-4dc5-bbfc-d8c4f245bf07)
 
 > 2. 검색화면
-> 3. 쓰기화면
--> 제목과 내용으로 구분. 사진도 드래그 & 드랍 할 수 있음.
-
-https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/50082fc2-0e38-4370-a2e3-abb31be41c12
+> 3. 쓰기화면(-> 제목과 내용으로 구분. 사진도 드래그 & 드랍 할 수 있음.)
+-> https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/50082fc2-0e38-4370-a2e3-abb31be41c12
 
 
