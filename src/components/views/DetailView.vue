@@ -6,20 +6,13 @@
 
     <div>
       <b-link @click="deleteWriting($route.query.id)">삭제</b-link>
-      <b-link class="updateWriting" @click="updateWriting($route.query.id)"
-        >수정</b-link
-      >
+      <b-link class="updateWriting" @click="updateWriting($route.query.id)">수정</b-link>
     </div>
 
     <div class="detailContext">
       <div v-for="(line, index) in contextValue.split('\n')" :key="index">
         <template v-if="line.startsWith('![]')">
-          <input
-            class="preShowWriting"
-            type="image"
-            :src="extractImageUrl(line)"
-            disabled
-          />
+          <input class="preShowWriting" type="image" :src="extractImageUrl(line)" disabled />
         </template>
         <template v-else>
           <textarea
@@ -68,6 +61,9 @@ export default {
   },
   methods: {
     deleteWriting(id) {
+      const filePathList = {
+        id: id,
+      };
       this.$bvModal
         .msgBoxConfirm("삭제하겠습니까?", {
           size: "sm",
@@ -85,6 +81,9 @@ export default {
             axios
               .delete("/api/writings/delete/" + id)
               .then(() => {
+                axios.post("/api/files/delete-all", filePathList).catch((error) => {
+                  console.log({ error });
+                });
                 this.$bvModal
                   .msgBoxOk("삭제되었습니다.", {
                     size: "sm",
@@ -97,10 +96,7 @@ export default {
                   });
               })
               .catch((error) => {
-                console.error(
-                  "An error occurred while saving the text:",
-                  error
-                );
+                console.error("An error occurred while saving the text:", error);
               });
           } else {
             return null;
