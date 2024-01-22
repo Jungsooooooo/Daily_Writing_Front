@@ -1,4 +1,4 @@
-## 1,일기를 쓰기 위해 만든 프로젝트 프론트
+![writingexample-ezgif com-video-to-gif-converter_out](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/68fdc156-f502-456c-bda0-b62e12d1cf52)## 1,일기를 쓰기 위해 만든 프로젝트 프론트
 
 ## ⛏사용기술
 ### 1. Front-end
@@ -25,13 +25,14 @@
 -> ![image](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/063dcdb1-3837-4dc5-bbfc-d8c4f245bf07)
 
 > 2. 쓰기화면(-> 제목과 내용으로 구분. 사진도 드래그 & 드랍 할 수 있음.)
->> ![writingexample-ezgif com-video-to-gif-converter](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/00243c35-c766-495d-81fb-5bd8f049cc97)
+>> ![writingexample-ezgif com-video-to-gif-converter_out](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/0a18a5dd-add0-421a-9fba-a69d043536c1)
 
 > 3. 검색화면(제목으로 검색)
->> ![ezgif com-video-to-gif-converter](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/a542d0ad-3c46-40f4-8b68-f5f9b12391a7)
+>> ![ezgif com-video-to-gif-converter_out](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/3aacb00f-13f1-47b2-aae7-6d7f8fd7a84e)
 
 > 4. 수정화면
->> ![sujeong](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/679e905e-eff5-46f3-a7fe-322c9eecacbc)
+>> ![sujeong_out](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/70d25bc9-802f-4fda-9ef7-463c8e16de07)
+
 
 
 
