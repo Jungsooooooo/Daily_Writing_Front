@@ -3,11 +3,7 @@
     <b-container fluid>
       <b-row>
         <b-col cols="6" class="writePosition">
-          <input
-            class="writeTitle"
-            placeholder="제목을 입력해주세요"
-            @input="updateTitlePreview"
-          />
+          <input class="writeTitle" placeholder="제목을 입력해주세요" @input="updateTitlePreview" />
 
           <div>
             <textarea
@@ -20,26 +16,14 @@
             />
           </div>
           <footer class="saveWriteCol">
-            <b-button size="sm" class="saveWrite" @click="saveWrite()"
-              >저장</b-button
-            >
+            <b-button size="sm" class="saveWrite" @click="saveWrite()">저장</b-button>
           </footer>
         </b-col>
         <b-col cols="6">
           <h1><input type="text" v-model="title" class="preShowTitle" /></h1>
           <div v-for="(line, index) in imageData.split('\n')" :key="index">
-            <template
-              v-if="
-                line.startsWith('![]') &&
-                line.endsWith(')') &&
-                showImage == true
-              "
-            >
-              <input
-                class="preShowImageWriting"
-                type="image"
-                :src="extractImageUrl(line)"
-              />
+            <template v-if="line.startsWith('![]') && line.endsWith(')') && showImage == true">
+              <input class="preShowImageWriting" type="image" :src="extractImageUrl(line)" />
             </template>
             <template v-else>
               <textarea
@@ -122,11 +106,15 @@ export default {
       console.log({ imageInputs });
       console.log({ mainImageUrl });
 
-      let fliePathList = arrayImageInputs.map((element) => {
+      let filePathList = arrayImageInputs.map((element) => {
         return element.src.split("/").pop();
       });
 
-      axios.post("/api/files/delete", fliePathList);
+      const fileToDelete = {
+        filePathList: filePathList,
+      };
+
+      axios.post("/api/files/delete", fileToDelete);
 
       const input = {
         title: title,
@@ -160,11 +148,9 @@ export default {
               axios.put("/api/writings/update", finalUpdate);
             })
             .then(() => {
-              this.$bvModal
-                .msgBoxOk(res.data.title + "이 작성되었습니다.")
-                .then(() => {
-                  this.$router.push("/");
-                });
+              this.$bvModal.msgBoxOk(res.data.title + "이 작성되었습니다.").then(() => {
+                this.$router.push("/");
+              });
             })
             .catch((error) => {
               console.error(error);
@@ -191,13 +177,7 @@ export default {
         reader.onload = (e) => {
           this.image = e.target.result.split(",")[1];
           console.log(this.image);
-          this.imageData +=
-            "\n" +
-            "![]" +
-            "(" +
-            "http://192.168.67.128/images/temp/" +
-            file.name +
-            ")";
+          this.imageData += "\n" + "![]" + "(" + "http://192.168.75.128/images/temp/" + file.name + ")";
         };
 
         reader.readAsDataURL(file);

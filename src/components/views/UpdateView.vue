@@ -3,48 +3,21 @@
     <b-container fluid>
       <b-row>
         <b-col cols="6" class="writePosition">
-          <input
-            v-model="titleValue"
-            class="writeTitle"
-            @input="updateTitlePreview"
-          />
+          <input v-model="titleValue" class="writeTitle" @input="updateTitlePreview" />
           <div>
-            <textarea
-              v-model="contextValue"
-              class="writeContext"
-              wrap="soft"
-              @dragover.prevent
-              @drop="handleDrop"
-            />
+            <textarea v-model="contextValue" class="writeContext" wrap="soft" @dragover.prevent @drop="handleDrop" />
           </div>
           <footer class="saveWriteCol">
-            <b-button size="sm" class="saveWrite" @click="updateWrite()"
-              >수정</b-button
-            >
+            <b-button size="sm" class="saveWrite" @click="updateWrite()">수정</b-button>
           </footer>
         </b-col>
         <b-col cols="6">
           <h1>
-            <input
-              type="text"
-              v-model="titleValue"
-              class="preShowTitle"
-              disabled
-            />
+            <input type="text" v-model="titleValue" class="preShowTitle" disabled />
           </h1>
           <div v-for="(line, index) in contextValue.split('\n')" :key="index">
-            <template
-              v-if="
-                line.startsWith('![]') &&
-                line.endsWith(')') &&
-                showImage == true
-              "
-            >
-              <input
-                class="preShowImageWriting"
-                type="image"
-                :src="extractImageUrl(line)"
-              />
+            <template v-if="line.startsWith('![]') && line.endsWith(')') && showImage == true">
+              <input class="preShowImageWriting" type="image" :src="extractImageUrl(line)" />
             </template>
             <template v-else>
               <textarea
@@ -116,7 +89,7 @@ export default {
     updateWrite() {
       let title = document.getElementsByClassName("writeTitle")[0].value;
       let context = document.getElementsByClassName("writeContext")[0].value;
-      let id = this.id;
+      let id = this.$route.query.id;
       var imageInputs = document.querySelectorAll('input[type="image"]');
 
       let mainImageUrl = null;
@@ -127,11 +100,14 @@ export default {
       }
 
       let arrayImageInputs = Array.prototype.slice.call(imageInputs);
-      let fliePathList = arrayImageInputs.map((element) => {
+      let filePathList = arrayImageInputs.map((element) => {
         return element.src.split("/").pop();
       });
 
-      axios.post("/api/files/delete", fliePathList);
+      const fileToDelete = {
+        filePathList: filePathList,
+        id: id,
+      };
       const input = {
         title: title,
         context: context,
@@ -139,12 +115,10 @@ export default {
         id: id,
       };
       axios.put("/api/writings/update", input).then((res) => {
-        console.log(res.data);
-        this.$bvModal
-          .msgBoxOk(res.data.title + "이 수정되었습니다.")
-          .then(() => {
-            this.$router.push("/");
-          });
+        axios.post("/api/files/delete-by-id", fileToDelete);
+        this.$bvModal.msgBoxOk(res.data.title + "이 수정되었습니다.").then(() => {
+          this.$router.push("/");
+        });
       });
     },
     handleDrop(event) {
@@ -162,15 +136,7 @@ export default {
 
         reader.onload = (e) => {
           this.image = e.target.result.split(",")[1];
-          this.contextValue +=
-            "\n" +
-            "![]" +
-            "(" +
-            "http://192.168.75.128/images/" +
-            this.id +
-            "/" +
-            file.name +
-            ")";
+          this.contextValue += "\n" + "![]" + "(" + "http://192.168.75.128/images/" + this.id + "/" + file.name + ")";
         };
 
         reader.readAsDataURL(file);
