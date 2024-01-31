@@ -1,4 +1,4 @@
-![writingexample-ezgif com-video-to-gif-converter_out](https://github.com/Jungsooooooo/Daily_Writing_Front/assets/94541011/68fdc156-f502-456c-bda0-b62e12d1cf52)## 1,일기를 쓰기 위해 만든 프로젝트 프론트
+## 1,일기를 쓰기 위해 만든 프로젝트 프론트
 
 ## ⛏사용기술
 ### 1. Front-end
