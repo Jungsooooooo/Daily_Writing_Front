@@ -10,7 +10,7 @@
 
 > 1. 홈 화면
 >> b-pagination으로 Page 처리된 데이터를 가져오게 끔 구현.
->> nginx 서버 url로 메인 이미지 보여주게 구현.
+> nginx 서버 url로 메인 이미지 보여주게 구현.
 > 2. 검색
 >> jpa Repository로 제목 검색할 수 있게 끔 구현.
 >>
